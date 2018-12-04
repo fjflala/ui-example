@@ -1,0 +1,30 @@
+/**
+* Commons
+**/
+@import '../commons/styles/variables__small.scss';
+
+.ui-button {
+  border-width: 1;
+  border-style: solid;
+  border-color: transparent;
+  padding: $gutter-s $gutter-base;
+  border-radius: $border-radius;
+  cursor: pointer;
+  
+  &--primary {
+    background-color: $primary-color;
+    color: $white;
+  }
+  
+  &--secondary {
+    background-color: $white;
+    color: $primary-color;
+    border-color: $primary-color;
+  }
+
+  &--disabled {
+    background-color: $gray-500;
+    color: $gray-400;
+    cursor: not-allowed;
+  }
+}
