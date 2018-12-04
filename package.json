@@ -1,0 +1,38 @@
+{
+  "name": "ui-example",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "start-storybook -p 9001 -c .storybook"
+  },
+  "author": "Francisco Lala",
+  "license": "ISC",
+  "dependencies": {
+    "@storybook/addon-links": "^4.0.9",
+    "@storybook/addons": "^4.0.9",
+    "@storybook/cli": "^4.0.11",
+    "@storybook/react": "^4.0.9",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.0.4",
+    "classnames": "^2.2.6",
+    "init": "^0.1.2",
+    "prop-types": "^15.6.2",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "sb": "^0.2.1",
+    "scss-loader": "0.0.1",
+    "storybook": "^1.0.0",
+    "webpack": "^4.27.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^4.0.11",
+    "@storybook/addon-info": "^4.0.11",
+    "@storybook/addon-knobs": "^4.0.11",
+    "css-loader": "^1.0.1",
+    "node-sass": "^4.10.0",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1"
+  }
+}
