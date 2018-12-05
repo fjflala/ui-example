@@ -1,14 +1,14 @@
 {
   "name": "ui-example",
-  "version": "0.1.0",
+  "version": "0.1.5-beta-13",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "start-storybook -p 9001 -c .storybook",
     "deploy-storybook": "storybook-to-ghpages",
-    "dist": "webpack --mode production",
-    "postinstall": "npm run dist"
+    "dist": "node node_modules/.bin/webpack --mode production",
+    "publish:release": "npm run dist && npm publish --registry http://localhost:4873"
   },
   "author": "Francisco Lala",
   "license": "ISC",
@@ -38,6 +38,7 @@
     "babel-preset-react-optimize": "^1.0.1",
     "classnames": "^2.2.6",
     "css-loader": "^1.0.1",
+    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "node-sass": "^4.10.0",
     "sass-loader": "^7.1.0",
     "storybook": "^1.0.0",
