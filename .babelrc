@@ -1,0 +1,17 @@
+{
+  "presets": [
+    "@babel/env",
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-transform-react-constant-elements"
+  ],
+  "env": {
+    "production": {
+      "plugins": [
+        "transform-react-inline-elements"
+      ]
+    }
+  }
+}
