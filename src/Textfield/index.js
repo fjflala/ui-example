@@ -20,6 +20,30 @@ const inputUnsafeProps = [
  *  Textfield component
  */
 class Textfield extends PureComponent {
+  static propTypes = {
+    hint: PropTypes.string,
+    label: PropTypes.string,
+    className: PropTypes.string,
+    modifier: PropTypes.oneOf(['default', 'error', 'loading']),
+    onChange: PropTypes.func,
+    onFocus: PropTypes.func,
+    onHover: PropTypes.func,
+    onKeyDown: PropTypes.func,
+    onKeyUp: PropTypes.func,
+  }
+
+  static defaultProps = {
+    hint: '',
+    label: '',
+    className: '',
+    modifier: 'default',
+    onChange: () => {},
+    onFocus: () => {},
+    onHover: () => {},
+    onKeyDown: () => {},
+    onKeyUp: () => {},
+  }
+
   constructor(props) {
     super(props);
 
@@ -28,6 +52,11 @@ class Textfield extends PureComponent {
     };
   }
 
+  /**
+   * getSafeProps method
+   * Will return the safe props for button element
+   * @returns {Object} - The props
+   */
   getSafeProps = () => {
     const props = {};
 
@@ -41,11 +70,15 @@ class Textfield extends PureComponent {
 
     return props;
   }
-
-  onChange = (e) => {
+  
+  /**
+   * getSafeProps method
+   * Set the state for UI proposals
+   */
+  onChange = (event) => {
     const {
       value,
-    } = e.target;
+    } = event.target;
 
     const {
       onChange,
@@ -61,12 +94,16 @@ class Textfield extends PureComponent {
       label,
       hint,
       modifier,
+      className,
     } = this.props;
 
-    const className = classnames(
+    const classNames = classnames(
       nameSpace,
+      className,
+      `${nameSpace}--${modifier}`,
       {
-        [`${nameSpace}--active`]: Boolean(this.state.value),
+        [`${nameSpace}--active`]: Boolean(this.state.value.length),
+        [`${nameSpace}--active`]: Boolean(this.state.value.length),
       },
     );
 
@@ -74,7 +111,7 @@ class Textfield extends PureComponent {
 
     return (
       <div
-        className={className}
+        className={classNames}
       >
         <label className={`${nameSpace}__label`}>{label}</label>
         <input
