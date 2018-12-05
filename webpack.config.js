@@ -3,30 +3,26 @@
  */
 const glob = require('glob');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 /**
  *  Helpers
  */
 const entryArrayJS = glob.sync('./src/**/index.js');
-const entryArraySCSS = glob.sync('./src/**/*.scss');
 
-const entryObjectJS = entryArrayJS.reduce((acc, item) => {
-  const name = item.replace('.js', '').replace('./src/', '').toLowerCase();
+const entryObject = entryArrayJS.reduce((acc, item) => {
+  const name = item.replace('.js', '').replace('./src/', '');
   acc[name] = item;
   return acc;
 }, {});
 
-const entryObjectSCSS = entryArraySCSS.reduce((acc, item) => {
-  const name = item.replace('.scss', '').replace('./src/', '').toLowerCase();
-  acc[name] = item;
-  return acc;
-}, {});
-
-
-const entryObject = Object.assign(entryObjectJS, entryObjectSCSS, {});
-
-console.log(entryObject)
+const copyPlugin = new CopyWebpackPlugin([{
+  from: './src/**/*.scss',
+  test: /(src)\/(.+)\.scss$/,
+  to: './ui/[2].scss',
+  force: true,
+  flatten: true,
+}]);
 
 /**
  *  Webpack Config
@@ -36,7 +32,10 @@ module.exports = {
   output: {
     libraryTarget: 'commonjs2',
     library: '[name]',
-    filename: 'ui/[name].{js|scss}'
+    filename: 'ui/[name].js'
+  },
+  resolve: {
+    extensions: ['.js'],
   },
   module: {
     rules: [
@@ -47,14 +46,6 @@ module.exports = {
           loader: 'babel-loader',
         },
       },
-      {
-        test: /\.scss$/,
-        exclude: /node_modules/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
-        }),
-      }
     ],
   },
   optimization: {
@@ -75,10 +66,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new ExtractTextPlugin({
-      filename: './src/**[name].scss',
-      disable: false,
-      allChunks: true
-    }),
+    copyPlugin,
   ],
 };
