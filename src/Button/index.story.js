@@ -3,7 +3,9 @@
  */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
-import { withKnobs, text, boolean, number } from '@storybook/addon-knobs';
+import {
+  withKnobs, text, boolean,
+} from '@storybook/addon-knobs';
 import { actions } from '@storybook/addon-actions';
 import { withInfo } from '@storybook/addon-info';
 import './style.scss';

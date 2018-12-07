@@ -47,10 +47,24 @@ class Textfield extends PureComponent {
   constructor(props) {
     super(props);
 
+    this.controlID = this.getControlID();
+
     this.state = {
       value: '',
     };
   }
+
+  getControlID = () => {
+    const {
+      id,
+    } = this.props;
+
+    const name = id || nameSpace;
+    const randomKey = Math.random().toString(36).substring(7);
+    const controlID = `${name}-${randomKey}`;
+
+    return controlID;
+  };
 
   /**
    * getSafeProps method
@@ -65,12 +79,12 @@ class Textfield extends PureComponent {
         props[key] = this.props[key];
       }
 
-      return;
+      return key;
     });
 
     return props;
   }
-  
+
   /**
    * getSafeProps method
    * Set the state for UI proposals
@@ -103,7 +117,6 @@ class Textfield extends PureComponent {
       `${nameSpace}--${modifier}`,
       {
         [`${nameSpace}--active`]: Boolean(this.state.value.length),
-        [`${nameSpace}--active`]: Boolean(this.state.value.length),
       },
     );
 
@@ -113,15 +126,21 @@ class Textfield extends PureComponent {
       <div
         className={classNames}
       >
-        <label className={`${nameSpace}__label`}>{label}</label>
+        <label
+          htmlFor={this.controlID}
+          className={`${nameSpace}__label`}
+        >
+          {label}
+        </label>
         <input
           className={`${nameSpace}__input`}
           {...inputSafeProps}
+          id={this.controlID}
           onChange={event => this.onChange(event)}
         />
         <span className={`${nameSpace}__hint`}>{hint}</span>
       </div>
-    )
+    );
   }
 }
 

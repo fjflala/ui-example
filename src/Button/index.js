@@ -15,7 +15,7 @@ const safeProps = [
   'onClick',
   'className',
 ];
-const nameSpace = 'ui-button'
+const nameSpace = 'ui-button';
 
 /**
  *  Ui Button
@@ -53,7 +53,7 @@ class Button extends PureComponent {
         props[key] = this.props[key];
       }
 
-      return;
+      return key;
     });
 
     return props;
@@ -63,13 +63,13 @@ class Button extends PureComponent {
     const {
       children,
       modifier,
-      disabled
+      disabled,
     } = this.props;
 
     const props = this.getSafeProps();
 
     const className = classnames(
-      nameSpace, 
+      nameSpace,
       `${nameSpace}--${modifier}`,
       {
         [`${nameSpace}--disabled`]: disabled,
@@ -78,8 +78,8 @@ class Button extends PureComponent {
 
     return (
       <button
-      {...props}
-      className={className}
+        {...props}
+        className={className}
       >
         {children}
       </button>
