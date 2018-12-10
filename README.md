@@ -1,9 +1,18 @@
 # UI EXAMPLE
 
-## Intro
-Antes que nada esto es una prueba de concepto, de como una librería UI debería ser.
-Esta librería está realizada con ReactJS, sin ningún framework extra. Esto está pensando para que sea lo más standalone posible.
-Para generar los bundles se utiliza Webpack, en cuanto a los estilos se utiliza SASS como sintaxís. Estos estilos no van a generar bundle `.css`, ya que está pensando para que, en cada proyecto puedas importar los estilos dónde se desee y así optimizar los bundles en su proyecto tanto como sea posible, o incluso si quieres utilizar tus propios estilos.
+## Description
+UI Library proof of concept. This library is bootstrapped using React, without any extra framework or library. It uses Webpack under the hood to generate the bundles, and it uses SASS syntax for the styles. The styles are not going to generate a bundle `.css`, because the library is created to import only the styles that we need inside each project. This way we will optimize the performance of the projects.
+
+## Getting started
+```
+git clone https://github.com/fjflala/ui-example.git
+
+npm install
+
+npm run storybook
+```
+
+See http://localhost:9002 and play with Storybook:)
 
 ## Componentes
 

@@ -8,7 +8,7 @@
     "lint:watch": "eslint src/ --watch",
     "test:watch": "jest --watch",
     "test": "jest --coverage",
-    "storybook": "start-storybook -p 9001 -c .storybook",
+    "storybook": "start-storybook -p 9002 -c .storybook",
     "deploy-storybook": "storybook-to-ghpages",
     "dist": "rm -rf dist && npm run test && node node_modules/.bin/webpack --mode production",
     "publish:release": "npm run dist && npm publish --registry http://localhost:4873"
@@ -28,7 +28,6 @@
   },
   "devDependencies": {
     "@babel/plugin-transform-react-constant-elements": "^7.2.0",
-    
     "@storybook/addons": "^4.0.9",
     "@storybook/cli": "^4.0.11",
     "@storybook/storybook-deployer": "^2.8.1",
